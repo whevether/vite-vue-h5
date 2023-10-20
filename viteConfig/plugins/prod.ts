@@ -8,7 +8,7 @@ import pkg from '../../package.json'
 const registerProdPlugins = (option: RegisterPluginsParams): VitePlugins => {
   const plugins: VitePlugins = [
     // gzip插件
-   option.env.VITE_BUILD_GZIP === 'true' && viteCompression({
+   (option.env.VITE_BUILD_GZIP === 'true' && option.isProd) && viteCompression({
       filter: /\.(js|css)$/i,
       verbose: true,
       disable: false,
