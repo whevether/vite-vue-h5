@@ -1,0 +1,7 @@
+build
+src/assets
+public
+dist
+tests/
+types
+index.html
