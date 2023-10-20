@@ -6,8 +6,10 @@
   "description": "keep.wan",
   "copyright": "'vite + vue + ts + vant' template",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host --open --force",
     "build:prod": "vite build --mode production",
+    "build:android": "vite build --mode android",
+    "build:ios": "vite build --mode ios",
     "tsc": "vue-tsc --noEmit",
     "serve": "vite preview",
     "prepare": "husky install",

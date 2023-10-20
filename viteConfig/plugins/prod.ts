@@ -8,19 +8,21 @@ import pkg from '../../package.json'
 const registerProdPlugins = (option: RegisterPluginsParams): VitePlugins => {
   const plugins: VitePlugins = [
     // gzip插件
-    viteCompression({
+   option.env.VITE_BUILD_GZIP === 'true' && viteCompression({
       filter: /\.(js|css)$/i,
-      algorithm: 'brotliCompress',
-      threshold: 10 * 1024 // 10kb
+      verbose: true,
+      disable: false,
+      threshold: 10240,
+      algorithm: "gzip",
+      ext: ".gz",
     }),
     // 添加版权注释
     banner({
       content: `/**\n * name: ${pkg.name}\n * version: v${pkg.version}\n * description: ${pkg.description}\n * author: ${pkg.author}\n * copyright: ${pkg.copyright}\n */`
     })
   ]
-
   //  包分析插件
-  if (process.env.REPORT === 'true') {
+  if (option.env.VITE_REPORT === 'true') {
     plugins.push(
       visualizer({
         open: true,

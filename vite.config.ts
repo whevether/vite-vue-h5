@@ -16,15 +16,16 @@ const assetsDir = 'assets'
 const config = ({ command, mode }: ConfigEnv): UserConfigExport => {
   // 环境变量
   const env = loadEnv(mode, process.cwd()) as unknown as RegisterPluginsParams['env']
-  // 生产环境判断
-  const isEnvProduction = process.env.VITE_USER_NODE_ENV === 'production'
+  // 打包模式
+  const modeEnv = process.env.VITE_USER_NODE_ENV;
+  const isProd = (modeEnv === 'production' || modeEnv === 'android' || modeEnv === 'ios')
   // 环境变量
   const envParams = { ...env }
 
   // 注册插件(方法)参数
   const options: RegisterPluginsParams = {
     env: envParams,
-    isEnvProduction,
+    isProd,
     command,
     pathResolve
   }
@@ -38,20 +39,20 @@ const config = ({ command, mode }: ConfigEnv): UserConfigExport => {
     cssCodeSplit: true,
     brotliSize: false,
     chunkSizeWarningLimit: 2000,
-    minify: isEnvProduction ? 'terser' : 'esbuild',
+    minify: (modeEnv === 'production') ? 'terser' : 'esbuild',
     rollupOptions: {
       output: { manualChunks }
     }
   } as BuildOptions
 
   // 生产环境去除console
-  isEnvProduction && (build.terserOptions = { compress: { drop_console: true } })
+  isProd && (build.terserOptions = { compress: { drop_console: true } })
 
   // 生成程序版本号
   const version = JSON.stringify(`v${pkg.version}`)
-
+  const baseURL = env.VITE_BASE_URL as string
   return defineConfig({
-    base: './',
+    base: baseURL,
     plugins: registerPlugins(options),
     define: {
       __APP_VERSION__: version

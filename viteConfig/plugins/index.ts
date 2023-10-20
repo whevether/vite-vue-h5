@@ -17,7 +17,7 @@ import path from 'path'
  * @returns
  */
 export default function registerPlugins(options: RegisterPluginsParams): VitePlugins {
-  const { env, pathResolve, isEnvProduction } = options
+  const { env, pathResolve, isProd } = options
   // vite插件
   let plugins: VitePlugins = [
     vue(),
@@ -65,7 +65,7 @@ export default function registerPlugins(options: RegisterPluginsParams): VitePlu
     }),
   ]
 
-  plugins = isEnvProduction
+  plugins = isProd
     ? [...plugins, ...registerProdPlugins(options)]
     : [...plugins, ...registerDevPlugins(options)]
 

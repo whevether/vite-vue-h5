@@ -2,7 +2,7 @@ import type { ConfigEnv, UserConfig } from 'vite'
 
 export interface RegisterPluginsParams {
   env: ImportMetaEnv
-  isEnvProduction: boolean
+  isProd: boolean
   command: ConfigEnv['command']
   pathResolve: (dir: string) => string
 }
