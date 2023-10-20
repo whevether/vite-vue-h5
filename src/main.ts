@@ -11,7 +11,7 @@ import router from '@/router'
 import '@/router/router-guards'
 import App from './App.vue'
 
-import '@/utils/vConsole'
+import '@/utils/vconsole'
 
 const app = createApp(App)
 
