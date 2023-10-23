@@ -14,7 +14,7 @@ const registerProdPlugins = (option: RegisterPluginsParams): VitePlugins => {
       disable: false,
       threshold: 10240,
       algorithm: "gzip",
-      ext: ".gz",
+      // ext: ".gz",
     }),
     // 添加版权注释
     banner({
