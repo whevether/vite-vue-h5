@@ -1,7 +1,7 @@
 import type { AxiosResponse, AxiosRequestHeaders } from 'axios'
 import axios from 'axios'
 import { Toast } from 'vant'
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/modules/user'
 
 const baseURL = import.meta.env.VITE_APP_BASE_API as string
 // 创建 axios 实例

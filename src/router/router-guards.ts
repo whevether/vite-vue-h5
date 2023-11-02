@@ -1,6 +1,6 @@
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/modules/user'
 import router from './index'
 
 NProgress.configure({ showSpinner: false })

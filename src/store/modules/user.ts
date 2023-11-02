@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import {getStorage,setStorage,removeStorage, UserInfoKey, TokenKey } from '@/utils/cookie'
+import { getStorage, setStorage, removeStorage, UserInfoKey, TokenKey } from '@/utils/cookie'
 import { login, logout } from '@/api/login'
 
 const useUserStore = defineStore('user', {
@@ -22,8 +22,8 @@ const useUserStore = defineStore('user', {
     async login(userForm: UserInfo) {
       try {
         const { data } = await login(userForm)
-        setStorage(TokenKey,data?.token);
-        setStorage(UserInfoKey,JSON.stringify(data?.userInfo))
+        setStorage(TokenKey, data?.token)
+        setStorage(UserInfoKey, JSON.stringify(data?.userInfo))
         this.setToken(data.token)
         this.setUserInfo(data.userInfo)
       } catch (error) {}
@@ -32,7 +32,7 @@ const useUserStore = defineStore('user', {
       try {
         await logout()
       } catch (error) {}
-      removeStorage([UserInfoKey,TokenKey])
+      removeStorage([UserInfoKey, TokenKey])
     }
   }
 })

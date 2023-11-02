@@ -1,3 +1,3 @@
 export default {
-    'my': '我的'
+  my: '我的'
 }

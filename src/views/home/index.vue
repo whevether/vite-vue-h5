@@ -32,7 +32,7 @@
 <script lang="ts" setup>
 import { reactive, toRefs } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/modules/user'
 import type { SwipeItem } from '@/components/Swipe'
 import Tabbar from '@/components/Tabbar'
 import AppSwiper from '@/components/Swipe'

@@ -4,6 +4,7 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import { viteVConsole } from 'vite-plugin-vconsole'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import type { RegisterPluginsParams, VitePlugins } from '../type'
@@ -28,6 +29,15 @@ export default function registerPlugins(options: RegisterPluginsParams): VitePlu
         data: { ...env }
       },
       minify: true
+    }),
+    (env.VITE_USER_NODE_ENV === 'android' || isProd) && viteVConsole({
+      entry: [path.resolve('src/main.ts')], // entry file
+      localEnabled: true, // 本地是否启用
+      enabled: true, // 是否启用
+      config: { // vconsole options
+        maxLogNumber: 1000,
+        theme: 'dark'
+      }
     }),
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹

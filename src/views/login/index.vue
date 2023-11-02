@@ -33,7 +33,7 @@
 <script lang="ts" setup>
 import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/modules/user'
 
 /**
  * 登录界面类型

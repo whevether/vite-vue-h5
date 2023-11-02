@@ -1,3 +1,3 @@
 export default {
-    my: 'my'
+  my: 'my'
 }

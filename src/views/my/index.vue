@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/modules/user'
 import Tabbar from '@/components/Tabbar'
 import { storeToRefs } from 'pinia';
 
