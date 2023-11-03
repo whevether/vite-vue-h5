@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import viteCompression from 'vite-plugin-compression'
+import viteCompression from 'vite-plugin-compression2'
 import { visualizer } from 'rollup-plugin-visualizer'
 import legacy from '@vitejs/plugin-legacy'
 import banner from 'vite-plugin-banner'

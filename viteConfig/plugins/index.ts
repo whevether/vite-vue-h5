@@ -1,6 +1,5 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { createHtmlPlugin } from 'vite-plugin-html'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -24,12 +23,6 @@ export default function registerPlugins(options: RegisterPluginsParams): VitePlu
     vue(),
     // defineOptions 宏
     DefineOptions(),
-    createHtmlPlugin({
-      inject: {
-        data: { ...env }
-      },
-      minify: true
-    }),
     (env.VITE_USER_NODE_ENV === 'android' || isProd) && viteVConsole({
       entry: [path.resolve('src/main.ts')], // entry file
       localEnabled: true, // 本地是否启用
