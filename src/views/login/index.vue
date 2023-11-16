@@ -32,7 +32,6 @@
 
 <script lang="ts" setup>
 import { reactive, toRefs } from 'vue'
-import { useRouter } from 'vue-router'
 import { useUserStore } from '@/store/modules/user'
 
 /**
@@ -48,7 +47,6 @@ interface ILoginState {
 
 const title = import.meta.env.VITE_APP_DEFAULT_TITLE
 
-const router = useRouter()
 const store = useUserStore()
 const state = reactive<ILoginState>({
   loading: false,
@@ -62,7 +60,6 @@ const submitForm = async () => {
   try {
     state.loading = true
     await store.login(state.loginForm)
-    router.push('/home')
   } catch (error) {
     console.log(error, 'e')
   }

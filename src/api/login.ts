@@ -12,14 +12,3 @@ export function login(data: RecordType): Promise<AxiosResponse<any>> {
     data
   })
 }
-
-/**
- * 退出
- * @returns
- */
-export function logout(): IApiResponse {
-  return request({
-    url: '/logout',
-    method: 'get'
-  })
-}

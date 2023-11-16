@@ -48,12 +48,10 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
 import { useUserStore } from '@/store/modules/user'
 import Tabbar from '@/components/Tabbar'
 import { storeToRefs } from 'pinia';
 
-const router = useRouter()
 const store = useUserStore()
 
 const { userInfo } = storeToRefs(store)
@@ -77,7 +75,7 @@ const { userInfo } = storeToRefs(store)
 // })
 
 const logout = () => {
-  router.push('/login')
+  store.logout()
 }
 
 // const { userInfo } = toRefs(state)

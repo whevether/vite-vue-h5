@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { getStorage, setStorage, removeStorage, UserInfoKey, TokenKey } from '@/utils/cookie'
-import { login, logout } from '@/api/login'
+import router from '@/router'
+import { login } from '@/api/login'
 
 const useUserStore = defineStore('user', {
   state: (): UserStoreState => {
@@ -26,13 +27,12 @@ const useUserStore = defineStore('user', {
         setStorage(UserInfoKey, JSON.stringify(data?.userInfo))
         this.setToken(data.token)
         this.setUserInfo(data.userInfo)
+        router.push('/home')
       } catch (error) {}
     },
-    async logout() {
-      try {
-        await logout()
-      } catch (error) {}
+    logout() {
       removeStorage([UserInfoKey, TokenKey])
+      router.push({ path: '/login', replace: true })
     }
   }
 })

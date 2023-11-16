@@ -6,6 +6,7 @@ import { Plugin as importToCDN } from 'vite-plugin-cdn-import'
 import banner from 'vite-plugin-banner'
 import type { VitePlugins, RegisterPluginsParams } from '../type'
 import pkg from '../../package.json'
+import { PluginOption } from 'vite'
 
 const registerProdPlugins = (option: RegisterPluginsParams): VitePlugins => {
   const plugins: VitePlugins = [
@@ -127,7 +128,7 @@ const registerProdPlugins = (option: RegisterPluginsParams): VitePlugins => {
         open: true,
         gzipSize: true,
         brotliSize: true
-      })
+      }) as PluginOption
     )
   }
 

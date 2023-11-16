@@ -23,7 +23,7 @@ export default function registerPlugins(options: RegisterPluginsParams): VitePlu
     vue(),
     // defineOptions 宏
     DefineOptions(),
-    (env.VITE_USER_NODE_ENV === 'android' || isProd) && viteVConsole({
+    (env.VITE_USER_NODE_ENV === 'android') && viteVConsole({
       entry: [path.resolve('src/main.ts')], // entry file
       localEnabled: true, // 本地是否启用
       enabled: true, // 是否启用
